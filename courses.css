@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.course-form {
+    background-color: #4c3a3a;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.course-form label {
+    font-weight: bold;
+}
+.course-form input[type="text"],
+.course-form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.course-form input[type="text"]:focus{
+    background-color:#4450d2;
+    color: aliceblue;
+}
+.course-form textarea:focus{
+    background-color: #4450d2;
+    color: aliceblue;
+}
+
+.course-list {
+    list-style: none;
+    padding: 0;
+}
+.course-card {
+    border: 1px solid #4c3a3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(71, 73, 83);
+    color: rgb(10, 10, 9);
+
+}
+button{
+    cursor: pointer;
+}
+button{
+    background-color: green;
+    color: azure;
+    padding: 10px;
+    border-radius: 5px;
+    width: 15em;
+}
+.delete-button{
+    background-color: red;
+    color: wheat;
+}

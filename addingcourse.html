@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer's Interface</title>
+    <link rel="stylesheet" href="courses.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Trainer's Interface</h1>
+        <div class="course-form">
+            <h2>Create a New Course</h2>
+            <form id="courseForm">
+                <label for="courseTitle">Course Title:</label>
+                <input type="text" id="courseTitle" required>
+                <label for="courseDescription">Course Description:</label>
+                <textarea id="courseDescription" rows="4" required></textarea>
+                <button type="submit">Create Course</button>
+            </form>
+        </div>
+        <h2>Your Courses</h2>
+        <ul class="course-list" id="courseList">
+            <!-- Trainer's courses will be displayed here -->
+        </ul>
+    </div>
+
+    <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid with Search and Voice Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .ccontainer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ssearch-bar {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .ccard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .ccard {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(48, 44, 52);
+            color: rgb(247, 243, 243);
+        }
+        .ccard:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="ccontainer">
+        <h1>Card Grid with Search and Voice Search</h1>
+        <input type="text" id="ssearch" class="ssearch-bar" placeholder="Search...">
+        <button id="voice-search">Voice Search</button>
+        <div class="ccard-grid" id="cardGrid">
+            <!-- Sample Cards -->
+            <div class="ccard">
+                <h1>1</h1>
+                <p>Flask</p>Card 1
+            </div>
+            <div class="ccard">Html and Css</div>
+            <div class="ccard">Javascript</div>
+            <div class="ccard">Figma</div>
+            <div class="ccard">Adobe Xd</div>
+            <div class="ccard">React JS</div>
+            <div class="ccard">Angular JS</div>
+            <div class="ccard">Blockchain</div>
+            <div class="ccard">Devops</div>
+            <div class="ccard">Bootstrap</div>
+            <div class="ccard">AR VR</div>
+            <div class="ccard">Django</div>
+        </div>
+        <div>
+            <input type="text" id="newCardInput" placeholder="Enter card content">
+            <button id="addCardButton">Add Card</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to filter cards based on user input
+        function filterCards() {
+            const searchInput = document.getElementById('ssearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.ccard');
+
+            cards.forEach(ccard => {
+                const cardText = ccard.textContent.toLowerCase();
+                if (cardText.includes(searchInput)) {
+                    ccard.style.display = 'block';
+                } else {
+                    ccard.style.display = 'none';
+                }
+            });
+        }
+
+        // Listen for input in the search bar
+        document.getElementById('ssearch').addEventListener('input', filterCards);
+
+        // Voice Search
+        const voiceSearchButton = document.getElementById('voice-search');
+        voiceSearchButton.addEventListener('click', () => {
+            const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+            recognition.lang = 'en-US';
+
+            recognition.onresult = (event) => {
+                const voiceSearchResult = event.results[0][0].transcript;
+                document.getElementById('ssearch').value = voiceSearchResult;
+                filterCards();
+            };
+
+            recognition.start();
+        });
+
+        // Function to add a new card
+        function addCard() {
+            const newCardInput = document.getElementById('newCardInput').value;
+            if (newCardInput.trim() !== '') {
+                const cardGrid = document.getElementById('cardGrid');
+                const newCard = document.createElement('div');
+                newCard.classList.add('ccard');
+                newCard.textContent = newCardInput;
+                cardGrid.appendChild(newCard);
+                document.getElementById('newCardInput').value = '';
+            }
+        }
+
+        // Listen for the "Add Card" button click
+        document.getElementById('addCardButton').addEventListener('click', addCard);
+    </script>
+</body>
+</html>
